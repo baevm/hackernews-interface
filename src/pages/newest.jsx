@@ -1,30 +1,28 @@
 import React from 'react'
-import NewsCard from '../components/NewsCard'
+import NewsCards from '../components/NewsCards'
+import useSWR, { SWRConfig } from 'swr'
+import { getNewest } from '../services/getNewest'
 
-const newest = ({stories}) => {
+const newest = ({ fallback }) => {
   return (
     <>
-    {stories.map((story, index) => (
-      <NewsCard key={story.id} story={story} index={index + 1}/>
-    ))}
-  </>
+      <SWRConfig value={{ fallback }}>
+        <NewsCards url='/getNewest'/>
+      </SWRConfig>
+    </>
   )
 }
 
 export default newest
 
 export const getServerSideProps = async () => {
-  const data = await fetch(
-    'https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty&limitToFirst=10&orderBy="$key"'
-  )
-  const res = await data.json()
-  const stories = await Promise.all(
-    res.map((item) =>
-      fetch(`https://hacker-news.firebaseio.com/v0/item/${item}.json`).then(async (res) => await res.json())
-    )
-  )
+  const stories = await getNewest()
 
   return {
-    props: { stories},
+    props: {
+      fallback: {
+        '/getNewest': stories,
+      },
+    },
   }
 }

@@ -4,8 +4,6 @@ import React from 'react'
 import { formatTime } from '../lib/formatter'
 
 const Comments = ({ comments, answer }) => {
-  
-
   const hasChildren = (member) => {
     return member.children && member.children.length > 0
   }
@@ -43,7 +41,7 @@ const MainComment = ({ comment, answer }) => {
         </Box>
       </Box>
       <Box
-        sx={{ fontSize: '12px', wordWrap: 'break-word' }}
+        sx={{ fontSize: '12px', display: 'flex', flexDirection: 'column', whiteSpace: 'pre-wrap', wordWrap: 'break-word'  }}
         dangerouslySetInnerHTML={{ __html: comment.text ? comment.text : '[flagged]' }}
       />
     </Paper>

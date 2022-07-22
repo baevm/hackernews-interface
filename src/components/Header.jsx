@@ -1,6 +1,6 @@
-import React from 'react'
-import { Container, Box, Text, Button } from '@mantine/core'
+import { Box, Button, Text } from '@mantine/core'
 import Link from 'next/link'
+import React from 'react'
 
 const links = [
   {
@@ -37,23 +37,25 @@ const Header = () => {
           Hacker news
         </Text>
       </Link>
-      {links.map((link) => (
-        <Box key={link.title} sx={{ marginLeft: '1rem' }}>
-          <Link href={link.href} passHref>
-            <Button
-              component='a'
-              variant='subtle'
-              sx={{
-                color: 'black',
-                '&:hover': {
-                  backgroundColor: 'transparent',
-                },
-              }}>
-              {link.title}
-            </Button>
-          </Link>
-        </Box>
-      ))}
+      <Box sx={{ display: 'flex', flexWrap: 'wrap'}}>
+        {links.map((link) => (
+          <Box key={link.title} >
+            <Link href={link.href} passHref>
+              <Button
+                component='a'
+                variant='subtle'
+                sx={{
+                  color: 'black',
+                  '&:hover': {
+                    backgroundColor: 'transparent',
+                  },
+                }}>
+                {link.title}
+              </Button>
+            </Link>
+          </Box>
+        ))}
+      </Box>
     </Box>
   )
 }

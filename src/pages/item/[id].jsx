@@ -5,7 +5,6 @@ import Head from 'next/head'
 import ItemHeader from '../../components/ItemHeader'
 
 const Item = ({ comments }) => {
-  console.log(comments)
 
   return (
     <>

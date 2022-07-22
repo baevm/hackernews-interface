@@ -1,5 +1,5 @@
+import { Box, Container } from '@mantine/core'
 import React from 'react'
-import { Container, Box } from '@mantine/core'
 import Header from './Header'
 
 const Layout = ({ children }) => {
