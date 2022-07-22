@@ -1,5 +1,5 @@
 import React from 'react'
-import { SWRConfig } from 'swr'
+import { SWRConfig, unstable_serialize } from 'swr'
 import NewsCards from '../components/NewsCards'
 import { getAsks } from '../services/getAsks'
 
@@ -21,7 +21,7 @@ export const getServerSideProps = async () => {
   return {
     props: {
       fallback: {
-        '/getAsks': stories,
+        [unstable_serialize(['/getAsks', 10])]: stories,
       },
     },
   }

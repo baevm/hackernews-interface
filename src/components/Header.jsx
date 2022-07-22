@@ -7,13 +7,10 @@ const links = [
     title: 'new',
     href: '/newest',
   },
+
   {
-    title: 'past',
-    href: '/past',
-  },
-  {
-    title: 'comments',
-    href: '/comments',
+    title: 'best',
+    href: '/best',
   },
   {
     title: 'ask',
@@ -37,9 +34,9 @@ const Header = () => {
           Hacker news
         </Text>
       </Link>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap'}}>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
         {links.map((link) => (
-          <Box key={link.title} >
+          <Box key={link.title}>
             <Link href={link.href} passHref>
               <Button
                 component='a'

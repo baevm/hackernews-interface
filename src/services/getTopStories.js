@@ -1,6 +1,6 @@
-export const getTopStories = async () => {
+export const getTopStories = async (portion = 10) => {
   const data = await fetch(
-    'https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty&limitToFirst=10&orderBy="$key"'
+    `https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty&limitToFirst=${portion}&orderBy="$key"`
   )
   const dataJson = await data.json()
   const stories = await Promise.all(
@@ -8,6 +8,6 @@ export const getTopStories = async () => {
       fetch(`https://hacker-news.firebaseio.com/v0/item/${item}.json`).then(async (res) => await res.json())
     )
   )
-
+   
   return stories
 }

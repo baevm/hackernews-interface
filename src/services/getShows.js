@@ -1,6 +1,6 @@
-export const getShows = async () => {
+export const getShows = async (portion = 10) => {
   const data = await fetch(
-    'https://hacker-news.firebaseio.com/v0/showstories.json?print=pretty&limitToFirst=10&orderBy="$key"'
+    `https://hacker-news.firebaseio.com/v0/showstories.json?print=pretty&limitToFirst=${portion}&orderBy="$key"`
   )
   const dataJson = await data.json()
   const stories = await Promise.all(

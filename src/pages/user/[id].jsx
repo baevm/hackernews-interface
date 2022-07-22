@@ -4,7 +4,7 @@ import { formatTime } from '../../lib/formatter'
 import { getUser } from '../../services/getUser'
 
 const User = ({ user }) => {
-  console.log(user)
+ 
   return (
     <>
       {user && (
