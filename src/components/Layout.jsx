@@ -4,9 +4,11 @@ import Header from './Header'
 
 const Layout = ({ children }) => {
   return (
-    <Container size='xl' px='0' sx={{ backgroundColor: '#F6F6EF', height: '100vh' }}>
+    <Container size='xl' px='0' sx={{ backgroundColor: '#F6F6EF' }}>
       <Header />
-      <Box px='sm'>{children}</Box>
+      <Box px='sm' sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        {children}
+      </Box>
     </Container>
   )
 }

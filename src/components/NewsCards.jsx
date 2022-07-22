@@ -9,8 +9,9 @@ const NewsCard = () => {
   const { data } = useSWR('/getTopStories', fetcher, {
     revalidateOnFocus: false,
     revalidateOnMount: false,
-    refreshInterval: 60000,
+    refreshInterval: 999999, // 60000 = 1 min
   })
+  
   return (
     <>
       {data.map((story, index) => (
@@ -46,7 +47,7 @@ const NewsCard = () => {
                 <Anchor sx={{ textDecoration: 'none', color: 'black', fontSize: '12px' }}>hide </Anchor>
               </Link>{' '}
               |{' '}
-              <Link href={`/item/${1}`} passHref>
+              <Link href={`/item/${story.id}`} passHref>
                 <Anchor sx={{ textDecoration: 'none', color: 'black', fontSize: '12px' }}>
                   {story.descendants} comments
                 </Anchor>
