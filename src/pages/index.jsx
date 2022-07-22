@@ -15,7 +15,7 @@ export default function Home({ fallback }) {
 // unstable_serialize: https://github.com/vercel/swr/discussions/1447#discussioncomment-1309529
 export const getServerSideProps = async () => {
   const stories = await getTopStories()
-  console.log(stories.length)
+
   return {
     props: {
       fallback: {
